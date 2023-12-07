@@ -1,0 +1,61 @@
+﻿@model TedsMontanaRestaurantModel.ViewModels.OrderVM
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Sipariş Listesi</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Order" asp-action="Add" class="btn btn-primary">
+                <span>Yeni Sipariş ekle</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped my-2">
+            <thead>
+                <tr>
+                    <th>
+                        Sipariş ID
+                    </th>
+                    <th>
+                        Sipariş Tarihi
+                    </th>
+                    <th>
+                        Müşteri Adı
+                    </th>
+                    <th>
+                        İşlemler
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Order)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.OrderDate</td>
+                       
+                        <td>
+                            @foreach (var customer in Model.customerList)
+                            {
+                                if (customer.Value == order.CustomerId.ToString())
+                                {
+                                    <p>@customer.Text</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="Order" asp-action="Edit" asp-route-id="@order.OrderId" class="btn btn-primary">
+                                Edit
+                            </a>
+                            <a asp-controller="Order" asp-action="Delete" asp-route-id="@order.OrderId" class="btn btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

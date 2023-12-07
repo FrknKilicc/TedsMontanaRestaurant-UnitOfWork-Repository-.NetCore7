@@ -1,0 +1,36 @@
+﻿@model TedsMontanaRestaurantModel.ViewModels.MealVm
+<h2>Ürün @(Model.Meal.MealId <= 0 ? "Add" : "Edit")</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Meal.MealId" type="hidden" />
+
+    @if (@Model != null && !string.IsNullOrEmpty(Model.Meal.Images))
+    {
+        <div class="col-6">
+            <img src="@Model.Meal.Images" width="250px" />
+        </div>
+    }
+
+    <div class="row my-1">
+        <label asp-for="Meal.Name"></label>
+        <input asp-for="Meal.Name" class="form-control" />
+    </div>
+    <div class="row my-1">
+        <label asp-for="Meal.Price"></label>
+        <input asp-for="Meal.Price" class="form-control" />
+    </div>
+    <div class="row my-1">
+        <label asp-for="Meal.MenuId"></label>
+        <select asp-for="Meal.MenuId" asp-items="@Model.menuList">
+            <option disabled selected>--Menü Seçiniz</option>
+
+
+        </select>
+    </div>
+    <div class="row my-1">
+        <label asp-for="Meal.Images"></label>
+        <input type="file" id="file" name="file" accept="image/*" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary"> @(Model.Meal.MealId <= 0 ? "Add" : "Edit")</button>
+</form>

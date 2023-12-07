@@ -1,0 +1,30 @@
+﻿@model TedsMontanaRestaurantModel.ViewModels.MenuVM
+<h2>Ürün @(Model.menu.MenuId <= 0 ? "Oluştur" : "Güncelle")</h2>
+
+<h2>Menü Oluştur/Güncelle</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="menu.Name"></label>
+        <input asp-for="menu.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="menu.RestaurantId"></label>
+        <select asp-for="menu.RestaurantId" asp-items="@Model.restauranList" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="menu.Images"></label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @if (!string.IsNullOrEmpty(Model.menu.Images))
+        {
+            <img src="@Url.Content(Model.menu.Images)" alt="Menu Image" width="100" height="100" />
+        }
+    </div>
+
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+</form>

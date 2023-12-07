@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TedsMontanaRestaurantModel.Meal>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Yemek Listesi</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Meal" asp-action="Crup" class="btn btn-primary">
+                <span>Yeni Ürün Ekle</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped my-2">
+            <thead>
+                <tr>
+                    <th>Yemek Resmi</th>
+                    <th>Yemek Adı</th>
+                    <th>Fiyat</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item.Images" width="80px" /></td>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        
+                        <td>
+                            <a asp-controller="Meal" asp-action="Crup" asp-route-id="@item.MealId" class="btn btn-primary">
+                                Güncelle
+                            </a>
+                            <a asp-controller="Meal" asp-action="Delete" asp-route-id="@item.MealId" class="btn btn-danger">
+                                Sil
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+
+
+        </table>
+    </div>
+
+</div>

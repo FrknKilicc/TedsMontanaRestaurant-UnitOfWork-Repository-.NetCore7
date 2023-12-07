@@ -1,0 +1,24 @@
+﻿@model TedsMontanaRestaurantModel.Order
+
+<h2>Sipariş Ekle</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="OrderDate" class="control-label">Sipariş Tarihi:</label>
+        <input asp-for="OrderDate" class="form-control" />
+        <span asp-validation-for="OrderDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CustomerId" class="control-label">Müşteri:</label>
+        <select asp-for="CustomerId" asp-items="@ViewBag.CustomerList" class="form-control"></select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+   
+
+    <div class="form-group">
+        <input type="submit" value="Kaydet" class="btn btn-primary" />
+    </div>
+</form>
+
+<a asp-action="Index">Listeye Geri Dön</a>

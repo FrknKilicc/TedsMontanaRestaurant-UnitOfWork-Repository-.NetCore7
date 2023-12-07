@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TedsMontanaRestaurantModel.Restaurant>
+
+<h2>Restaurant List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Restoran ID</th>
+            <th>Restoran Adı</th>
+           
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.RestaurantId</td>
+                <td>@restaurant.Name</td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@restaurant.RestaurantId">Düzenle</a> |
+                    <a asp-action="Delete" asp-route-id="@restaurant.RestaurantId">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add">Yeni Restoran Ekle</a>

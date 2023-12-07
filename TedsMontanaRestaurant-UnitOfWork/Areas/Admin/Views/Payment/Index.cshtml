@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TedsMontanaRestaurantModel.Payment>
+
+<h2>Ödeme Listesi</h2>
+<a class="btn btn-primary" asp-action="Add" asp-controller="Payment">Yeni Ödeme </a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ödeme ID</th>
+            <th>Sipariş ID</th>
+            <th>Toplam Ödeme</th>
+            <!-- Add other columns as needed -->
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.PaymentId</td>
+                <td>@payment.OrderId</td>
+                <td>@payment.Amount</td>
+             
+                <td>
+                    <a asp-controller="Payment" asp-action="Edit" asp-route-id="@payment.PaymentId" class="btn btn-primary">Düzenle</a>
+                    <a asp-controller="Payment" asp-action="Delete" asp-route-id="@payment.PaymentId" class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

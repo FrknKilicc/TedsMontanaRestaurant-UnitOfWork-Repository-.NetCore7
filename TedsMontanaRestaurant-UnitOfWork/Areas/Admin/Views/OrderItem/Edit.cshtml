@@ -1,0 +1,22 @@
+﻿@model TedsMontanaRestaurantModel.OrderItem
+
+<form method="post" action="Edit">
+    <h2>Detay Güncelle</h2>
+    <div class="row">
+        @Html.HiddenFor(model => model.OrderItemId)
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="OrderId"></label>
+        <input asp-for="OrderId" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="MealId"></label>
+        <input asp-for="MealId" class="form-control" />
+    </div>
+    <div class="row my-2">
+        <div class="col-6"><button type="submit" asp-action="Edit" class="btn btn-primary">Kaydet</button></div>
+        <div class="col-6"><a asp-controller="OrderItem" asp-action="Index" class="btn btn-primary">Detay Listesine Dön</a></div>
+    </div>
+</form>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TedsMontanaRestaurantModel.OrderItem>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Sipariş Detay Listesi</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="OrderItem" asp-action="Add" class="btn btn-primary ">
+                <span>Sipariş Detayı Ekle</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+
+        <table class="table table-bordered table-striped my-2">
+            <thead>
+                <tr>
+                    <th>
+                        Sipariş Detay ID
+                    </th>
+                    <th>
+                        Miktar
+                    </th>
+                    <th>
+                        Sipariş ID
+                    </th>
+                    <th>
+                        Meal ID
+                    </th>
+                    
+                    <th>
+                        İşlemler
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OrderItemId</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.OrderId</td>
+                        <td>@item.MealId</td>
+                        <td>
+                            <a asp-controller="OrderItem" asp-action="Edit" asp-route-id="@item.OrderItemId" class="btn btn-primary">
+                                Edit
+                            </a>
+
+                            <a asp-controller="OrderItem" asp-action="Delete" asp-route-id="@item.OrderItemId" class="btn btn-danger">
+                                Delete
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

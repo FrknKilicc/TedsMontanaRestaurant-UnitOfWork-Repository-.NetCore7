@@ -1,0 +1,14 @@
+﻿@model TedsMontanaRestaurantModel.Customer
+
+<form method="post" action="Edit">
+    <h2>Müşteri Güncelle</h2>
+    <div class="row">
+        @Html.HiddenFor(model => model.CustomerId) 
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="row my-2">
+        <div class="col-6"><button type="submit" asp-action="Edit" class="btn btn-primary">Kaydet</button></div>
+        <div class="col-6"><a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Müşteri Listesime Dön</a></div>
+    </div>
+</form>
